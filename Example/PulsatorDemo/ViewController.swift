@@ -9,7 +9,7 @@
 import UIKit
 
 let kMaxRadius: CGFloat = 200
-let kMaxDuration: NSTimeInterval = 10
+let kMaxDuration: TimeInterval = 10
 
 class ViewController: UIViewController {
 
@@ -69,36 +69,36 @@ class ViewController: UIViewController {
 
     // MARK: - Actions
     
-    @IBAction func countChanged(sender: UISlider?) {
+    @IBAction func countChanged(_ sender: UISlider?) {
         //you can specify the number of pulse by the property "numPulse"
         pulsator.numPulse = Int(countSlider.value)
         countLabel.text = "\(pulsator.numPulse)"
     }
     
-    @IBAction func radiusChanged(sender: UISlider?) {
+    @IBAction func radiusChanged(_ sender: UISlider?) {
         pulsator.radius = CGFloat(radiusSlider.value) * kMaxRadius
         radiusLabel.text = String(format: "%.0f", pulsator.radius)
     }
     
-    @IBAction func durationChanged(sender: UISlider?) {
+    @IBAction func durationChanged(_ sender: UISlider?) {
         pulsator.animationDuration = Double(durationSlider.value) * kMaxDuration
         durationLabel.text = String(format: "%.1f", pulsator.animationDuration)
     }
     
-    @IBAction func colorChanged(sender: UISlider?) {
+    @IBAction func colorChanged(_ sender: UISlider?) {
         pulsator.backgroundColor = UIColor(
             red: CGFloat(rSlider.value),
             green: CGFloat(gSlider.value),
             blue: CGFloat(bSlider.value),
-            alpha: CGFloat(aSlider.value)).CGColor
+            alpha: CGFloat(aSlider.value)).cgColor
         rLabel.text = String(format: "%.2f", rSlider.value)
         gLabel.text = String(format: "%.2f", gSlider.value)
         bLabel.text = String(format: "%.2f", bSlider.value)
         aLabel.text = String(format: "%.2f", aSlider.value)
     }
     
-    @IBAction func switchChanged(sender: UISwitch) {
-        if sender.on {
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        if sender.isOn {
             pulsator.start()
         }
         else {
